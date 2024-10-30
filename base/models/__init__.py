@@ -1,4 +1,5 @@
 from .bill import Bill
+from .bill_payment import BillPayment
 from .brand import Brand
 from .category import Category
 from .custom_user import CustomUser

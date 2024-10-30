@@ -9,3 +9,6 @@ class Inventory(models.Model):
     stock_in = models.PositiveIntegerField()
     sold_out = models.PositiveIntegerField()
     available_stock = models.PositiveIntegerField()
+
+    def __str__(self):
+        return self.product_name
