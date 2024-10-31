@@ -1,7 +1,7 @@
 from rest_framework import generics
 
 from base.models import CustomUser
-from user.permissions import IsAdmin, IsOwner
+from user.permissions import IsAdmin, IsAdminOrOwner
 from user.serializers import CustomUserSerializer
 
 
@@ -17,5 +17,5 @@ class CustomUserDetail(generics.RetrieveUpdateDestroyAPIView):
 
     def get_permissions(self):
         if self.request.method in ("GET", "PATCH", "PUT"):
-            return [IsOwner()]
+            return [IsAdminOrOwner()]
         return [IsAdmin()]

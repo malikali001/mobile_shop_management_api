@@ -23,4 +23,4 @@ class IsAdminOrOwner(permissions.BasePermission):
     def has_object_permission(self, request, view, obj):
         if request.user.user_type == "admin":
             return True
-        return obj.manager == request.user
+        return obj == request.user
