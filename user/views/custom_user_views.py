@@ -1,7 +1,7 @@
 from rest_framework import generics
 
 from base.models import CustomUser
-from user.permissions import IsAdmin, IsAdminOrOwner
+from base.permissions import IsAdmin, IsAdminOrOwner
 from user.serializers import CustomUserSerializer
 
 
