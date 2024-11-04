@@ -13,12 +13,9 @@ class ProductSerializer(serializers.ModelSerializer):
         validated_data["user"] = user
         product = Product(**validated_data)
         product.save()
+
         inventory = Inventory.objects.create(
-            product_name=validated_data["name"],
-            product=product,
-            stock_in=0,
-            sold_out=0,
-            available_stock=0,
+            product_name=validated_data["name"], product=product
         )
         inventory.save()
         return product
