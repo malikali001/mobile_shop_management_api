@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from base.models import Product
+from base.models import Inventory, Product
 
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -13,4 +13,12 @@ class ProductSerializer(serializers.ModelSerializer):
         validated_data["user"] = user
         product = Product(**validated_data)
         product.save()
+        inventory = Inventory.objects.create(
+            product_name=validated_data["name"],
+            product=product,
+            stock_in=0,
+            sold_out=0,
+            available_stock=0,
+        )
+        inventory.save()
         return product
