@@ -4,6 +4,7 @@ from rest_framework.urlpatterns import format_suffix_patterns
 from product.views import (
     brand_view,
     category_view,
+    inventory_view,
     product_view,
     receive_view,
     sale_view,
@@ -20,6 +21,7 @@ urlpatterns = [
     path("receive/<int:pk>", receive_view.ReceiveDetail.as_view()),
     path("sale", sale_view.SaleList.as_view()),
     path("sale/<int:pk>", sale_view.SaleDetail.as_view()),
+    path("inventory", inventory_view.InventoryList.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
