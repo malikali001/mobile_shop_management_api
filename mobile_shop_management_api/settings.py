@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "base",
     "user",
     "product",
+    "transfer",
     "rest_framework_simplejwt",
     "rest_framework_simplejwt.token_blacklist",
 ]
