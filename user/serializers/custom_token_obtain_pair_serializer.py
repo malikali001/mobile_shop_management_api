@@ -14,13 +14,12 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         }
         if all(credentials.values()):
             user = authenticate(request=self.context.get("request"), **credentials)
-
             if not user:
                 raise serializers.ValidationError(
                     _("No active account found with the given credentials")
                 )
         else:
-            raise serializers.ValidationError(_('Must include "email" and "password".'))
+            raise serializers.ValidationError(_('Must include "phone" and "password".'))
 
         refresh = self.get_token(user)
 
@@ -34,5 +33,5 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
         token = super().get_token(user)
-        token["name"] = user.first_name
+        token["phone"] = user.phone_number
         return token
