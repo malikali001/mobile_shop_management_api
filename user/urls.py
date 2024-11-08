@@ -1,5 +1,6 @@
 from django.urls import path
 from rest_framework.urlpatterns import format_suffix_patterns
+from rest_framework_simplejwt.views import TokenRefreshView
 
 from user.views import custom_user_views, register_views
 
@@ -12,6 +13,7 @@ urlpatterns = [
         register_views.CustomTokenObtainPairView.as_view(),
         name="token_obtain_pair",
     ),
+    path("api/token/refresh", TokenRefreshView.as_view(), name="token_refresh"),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

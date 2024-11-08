@@ -6,6 +6,7 @@ from product.views import (
     category_view,
     inventory_view,
     product_view,
+    profit_calculation_view,
     receive_view,
     sale_view,
 )
@@ -22,6 +23,7 @@ urlpatterns = [
     path("sale", sale_view.SaleList.as_view()),
     path("sale/<int:pk>", sale_view.SaleDetail.as_view()),
     path("inventory", inventory_view.InventoryList.as_view()),
+    path("profit-calculation", profit_calculation_view.ProfitCalculation.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

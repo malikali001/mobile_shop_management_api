@@ -20,11 +20,10 @@ class CustomLogoutView(APIView):
     def post(self, request, *args, **kwargs):
         try:
             refresh_token = request.data.get("refresh_token")
-            token = RefreshToken(refresh_token)
-            token.blacklist()
+            refresh_token = RefreshToken(refresh_token)
+            refresh_token.blacklist()
         except Exception as e:
             return Response({"detail": str(e)}, status=status.HTTP_400_BAD_REQUEST)
-
         return Response(
             {"detail": "Successfully logged out"}, status=status.HTTP_205_RESET_CONTENT
         )
